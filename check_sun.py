@@ -20,7 +20,7 @@ loc = ephem.city('Toronto')
 sun = ephem.Sun()
 
 days = 365
-start = DT.datetime(2015, 1, 1, 0, 0, 0)
+start = DT.datetime(2016, 1, 1, 0, 0, 0)
 shift = DT.timedelta(days=-365)
 dp = start+shift
 
@@ -35,8 +35,8 @@ for i in range(days+1):
         loc.date = ephem.Date(dp+mins)
         sun.compute(loc)
 
-        if 45 < math.degrees(sun.alt) < 47:
-            if 145 < math.degrees(sun.az) < 155:
+        if 42 < math.degrees(sun.alt) < 50:
+            if 145 < math.degrees(sun.az) < 180:
                 d = ephem.Date(ephem.localtime(loc.date)).datetime()
                 times.append(d.time())
                 dates[str(d.date())] = times
